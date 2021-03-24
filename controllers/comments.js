@@ -6,14 +6,6 @@ const authLockedRoute = require("./Users/authLockedRoute");
 const Comment = require('../models/Comment.js')
 
 
-// // GET /users -- test endpoint
-// router.get('/comments', (req, res) => {
-//     res.json({ msg: 'hello from users!' })
-// })
-
-
-
-
 router.get('/', async (req, res) => {
     try {
         const comment = await Comment.find({})
@@ -26,10 +18,30 @@ router.get('/', async (req, res) => {
 })
 
 
-// // New  Form Route
-// router.get('/new', (req, res) => {
-//     res.render("comments/new")
-// })
+router.post('/', async (req, res) => {
+    try {
+        const comment = await Comment.create({})
+        console.log(comment)
+        res.json( { comment })
+    } catch (err) {
+        res.json({err})
+        console.log(err)
+    }
+})
+
+router.put('/:id', async (req, res) => {
+    try {
+        const comment = await Comment.updateOne({})
+        console.log(comment)
+        res.json( { comment })
+    } catch (err) {
+        res.json({err})
+        console.log(err)
+    }
+})
+
+
+
 
 
 
