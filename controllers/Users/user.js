@@ -98,11 +98,10 @@ router.get('/auth-locked', authLockedRoute, (req, res) => {
 })
 
 //  Delete route
-router.delete('/:user_id', async (req, res) => {
+router.delete('/:userid', async (req, res) => {
 try {
-      const user = await db.Users.findByPk(req.params.id)
-      const deletedUsers = await Users.destroy();
-      res.redirect('/Users');
+      const user = await User.findByIdAndDelete(req.params.id)
+      res.redirect('/');
   } catch (err) {
       console.log(err)
   } 

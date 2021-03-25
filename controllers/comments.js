@@ -3,7 +3,7 @@ const User = require("../models/Post.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authLockedRoute = require("./Users/authLockedRoute");
-const Comment = require('../models/Comment.js')
+const {Comment} = require('../models/Comment.js')
 
 
 router.get('/', async (req, res) => {

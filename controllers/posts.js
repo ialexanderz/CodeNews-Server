@@ -3,14 +3,15 @@ const User = require("../models/Post.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authLockedRoute = require("./Users/authLockedRoute");
-const Post = require('../models/Post.js')
+const {Post} = require('../models/Post.js')
 
 
 // Create 
 router.post('/', async (req, res) => {
     const newPost = await Post.create({
-        content: req.body.content
+        post_content: req.body.post_content
     })
+        await newPost.save()
     res.json(newPost)
 })
 
@@ -34,7 +35,7 @@ router.get('/:id', async (req, res) => {
  // Update
 router.put('/:id', async (req, res) => {
     const updatedPost = await Post.findByIdAndUpdate(req.params.id, {
-        content: req.body.content
+        post_content: req.body.post_content
     })
     res.json(updatedPost)
 })
