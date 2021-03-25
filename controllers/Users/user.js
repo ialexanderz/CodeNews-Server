@@ -92,6 +92,17 @@ router.post("/login", async (req, res) => {
 });
 
 // GET user by _id
+router.get("/:id", async (req, res) => {
+  try {
+    const user = await User.findOne({
+      _id: req.params.id,
+    });
+    res.json(user);
+    // const findUsers = await id.();
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 // ToDo what routes next?
 
