@@ -9,10 +9,7 @@ const {CommentSchema} = require('./Comment.js')
 const PostSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'comments'
-  },
-  url: {
-    type: String,
+    ref: 'user'
   },
   title: {
     type: String,
@@ -21,7 +18,7 @@ const PostSchema = new mongoose.Schema({
     type: String,
   },
   post_upvote: {
-    type: String,
+    type: Number,
   },
   comments: [CommentSchema]
 });
@@ -30,3 +27,4 @@ const PostSchema = new mongoose.Schema({
 const Post = mongoose.model("posts", PostSchema);
 
 module.exports = {Post, PostSchema}
+
