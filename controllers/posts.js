@@ -32,19 +32,19 @@ router.get('/:id', async (req, res) => {
 
 
 
-//  // Update
-// router.put('/:postId/comments/:commentId', async (req, res) => {
-//     const updatedPost = await Post.findByIdAndUpdate(req.params.id, {
-//         post_content: req.body.post_content
-//     })
-//     res.json(updatedPost)
-// })
+ // Update
+router.put('/:postId/comments/:commentId', async (req, res) => {
+    const updatedPost = await Post.findByIdAndUpdate(req.params.id, {
+        post_content: req.body.post_content
+    })
+    res.json(updatedPost)
+})
 
-// // Delete
-// router.delete('/:postId/comments/:commentId', async (req, res) => {
-//     const deletedPost = await Post.findByIdAndDelete(req.params.id)
-//     res.json(deletedPost)
-// })
+// Delete
+router.delete('/:postId/comments/:commentId', async (req, res) => {
+    const deletedPost = await Post.findByIdAndDelete(req.params.id)
+    res.json(deletedPost)
+})
 
 
 module.exports = router

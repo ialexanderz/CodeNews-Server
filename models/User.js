@@ -3,11 +3,13 @@ const mongoose = require("mongoose");
 
 // create the schema
 const UserSchema = new mongoose.Schema({
-email: {
-    type: String,
-},
-password: {
-    type: String,
+    username: String,
+    imageFile: String,
+    email: {
+        type: String,
+    },
+    password: {
+        type: String,
 },
 user_image: {
     // try using robohash for random placeholder image

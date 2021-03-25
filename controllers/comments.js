@@ -28,18 +28,6 @@ router.post('/', async (req, res) => {
 
 module.exports = router;
 
-// router.put('/:id', async (req, res) => {
-//     const updateComment = await Comment.findByIdAndUpdate(req.params.id, {
-//         comment_content: req.body.comment_content
-//     })
-//     res.json(updateComment)
-// })
-
-
-// router.delete('/:id', async (req, res) => {
-//     const deleteComment = await Comment.findByIdAndDelete(req.params.id)
-//     res.json(deleteComment)
-// })
 
 
 
