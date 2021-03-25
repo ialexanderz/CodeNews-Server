@@ -1,8 +1,8 @@
-const {User} = require('./models/User.js')
-const {UserSchema} = require('./models/User.js')
-const {Post} = require('./models/Post.js')
-const {Comment} = require('./models/Comment.js')
-require('./models')
+const {User} = require('../models/User.js')
+const {UserSchema} = require('../models/User.js')
+const {Post} = require('../models/Post.js')
+const {Comment} = require('../models/Comment.js')
+require('../models')
 
 const newUser = async () => {
     try {
