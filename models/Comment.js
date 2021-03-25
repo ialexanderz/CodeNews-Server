@@ -3,12 +3,15 @@ const mongoose = require("mongoose");
 
 
 // create the schema
+
+
 const CommentSchema = new mongoose.Schema({
   post_id: {
     type: Number,
   },
-  user_id: {
-    type: Number,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'comments'
   },
   comment_content: {
     type: String,
@@ -19,4 +22,7 @@ const CommentSchema = new mongoose.Schema({
 });
 
 // export the model
-module.exports = Comment = mongoose.model("comments", CommentSchema);
+// export the model
+const Comment = mongoose.model("comments", CommentSchema);
+
+module.exports = {Comment, CommentSchema}

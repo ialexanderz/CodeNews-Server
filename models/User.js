@@ -11,10 +11,14 @@ password: {
 },
 user_image: {
     // try using robohash for random placeholder image
-    type: "",
-    default: { type: String, default: `https://robohash.org/{}G.png?set=set5` },
+    type: String,
+    default: 'https://robohash.org/{}G.png?set=set5',
 },
 });
 
 // export the model
-module.exports = User = mongoose.model("users", UserSchema);
+// export the model
+const User = mongoose.model("users", UserSchema);
+
+
+module.exports = {User, UserSchema}
