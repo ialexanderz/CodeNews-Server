@@ -30,6 +30,7 @@ app.get('/',(req,res)=> {
 //controllers
 app.use('/users', require('./controllers/Users/user'))
 app.use('/comments', require('./controllers/comments') )
+app.use('/posts',require('./controllers/posts'))
 
 
 //Listen to server by telling the port 
