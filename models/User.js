@@ -14,8 +14,8 @@ const UserSchema = new mongoose.Schema({
 user_image: {
     // try using robohash for random placeholder image
     type: String,
-    default: 'https://robohash.org/{}G.png?set=set5',
-},
+    default: 'https://robohash.org/{}G.png?set=set5'
+}
 });
 
 // export the model

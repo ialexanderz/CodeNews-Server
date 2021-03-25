@@ -44,7 +44,8 @@ router.post("/register", async (req, res) => {
       expiresIn: 60 * 60,
     });
 
-    res.json({ token });
+    res.json({ token })
+    
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "🔥 OH NO server error" });

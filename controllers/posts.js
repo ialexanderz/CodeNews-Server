@@ -6,9 +6,11 @@ const authLockedRoute = require("./Users/authLockedRoute");
 const {Post} = require('../models/Post.js')
 
 
+
 // Create 
 router.post('/', async (req, res) => {
     const newPost = await Post.create({
+        comment_content: req.body.comment_content,
         post_content: req.body.post_content
     })
         await newPost.save()
@@ -34,7 +36,7 @@ router.get('/:id', async (req, res) => {
 
  // Update
 router.put('/:postId/comments/:commentId', async (req, res) => {
-    const updatedPost = await Post.findByIdAndUpdate(req.params.id, {
+    const updatedPost = await Post.findByIdAndUpdate(req.params.comment.id, {
         post_content: req.body.post_content
     })
     res.json(updatedPost)

@@ -6,6 +6,14 @@ const authLockedRoute = require("./Users/authLockedRoute");
 const {Comment} = require('../models/Comment.js')
 
 
+router.post('/', async (req, res) => {
+    const newComment = await Comment.create({
+        comment_content: req.body.comment_content
+    })
+    res.json(newComment)
+})
+
+
 router.get('/', async (req, res) => {
     try {
         const comment = await Comment.find({})
@@ -18,56 +26,5 @@ router.get('/', async (req, res) => {
 })
 
 
-router.post('/', async (req, res) => {
-    const newComment = await Comment.create({
-        comment_content: req.body.comment_content
-    })
-    res.json(newComment)
-})
-
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-// // Read (Index)
-// router.get('/', async (req, res) => {
-    //     const allComment = await Comment.find({})
-//     res.json(allComment)
-// })
-
-
-// Update
-// router.put('/:id/comment_content', async (req, res) => {
-//     try {
-//         const comment = await Comment.updateOne({})
-//         console.log(comment)
-//         res.json( { comment })
-//     } catch (err) {
-//         res.json({err})
-//         console.log(err)
-//     }
-// })
-
-
-// router.delete('/:id/comment_content', async (req, res) => {
-//     try {
-//         const comment = await Comment.delete({})
-//         console.log(comment)
-//         res.json( { comment })
-//     } catch (err) {
-//         res.json({err})
-//         console.log(err)
-//     }
-// })
-// Delete
-
-
