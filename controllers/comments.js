@@ -20,26 +20,26 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const newComment = await Comment.create({
-        content: req.body.content
+        comment_content: req.body.comment_content
     })
     res.json(newComment)
 })
 
-router.put('/:id', async (req, res) => {
-    const updateComment = await Comment.findByIdAndUpdate(req.params.id, {
-        content: req.body.content
-    })
-    res.json(updateComment)
-})
-
-
-router.delete('/:id', async (req, res) => {
-    const deleteComment = await Comment.findByIdAndDelete(req.params.id)
-    res.json(deleteComment)
-})
 
 module.exports = router;
 
+// router.put('/:id', async (req, res) => {
+//     const updateComment = await Comment.findByIdAndUpdate(req.params.id, {
+//         comment_content: req.body.comment_content
+//     })
+//     res.json(updateComment)
+// })
+
+
+// router.delete('/:id', async (req, res) => {
+//     const deleteComment = await Comment.findByIdAndDelete(req.params.id)
+//     res.json(deleteComment)
+// })
 
 
 
