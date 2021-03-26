@@ -4,29 +4,48 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authLockedRoute = require("./Users/authLockedRoute");
 const {Comment} = require('../models/Comment.js')
-
-
 router.get('/', async (req, res) => {
     try {
         const comment = await Comment.find({})
         console.log(comment)
-        res.json( { comment })
+        // res.json( { comment })
     } catch (err) {
         res.json({err})
         console.log(err)
     }
 })
 
-
 router.post('/', async (req, res) => {
-    const newComment = await Comment.create({
-        comment_content: req.body.comment_content
-    })
-    res.json(newComment)
+    try {
+        const newComment = await Comment.create({
+            comment_content: req.body.comment_content
+        })
+        await newComment.save()
+        console.log(newComment)
+
+    } catch(error) {
+        console.log('💔', error)
+    }
+
+    // res.json(newComment)
 })
 
 
+
+
+
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
 
 // router.put('/:id', async (req, res) => {
 //     const updateComment = await Comment.findByIdAndUpdate(req.params.id, {
