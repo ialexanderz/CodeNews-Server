@@ -38,11 +38,14 @@ router.post("/register", async (req, res) => {
       email: newUser.email,
       id: newUser.id,
     };
-
+console.log(newUser);
+console.log(process.env.JWT_SECRET);
     // sign it and send it back
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: 60 * 60,
     });
+
+  
 
     res.json({ token })
     
