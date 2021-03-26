@@ -21,3 +21,4 @@ console.log(`⛓ mongoDB connection @ ${db.host}:${db.port}`)
 db.on('error', err => {
 console.error(`🔥 something has gone wrong with the DB!!!!\n ${err}`)
 })
+ 

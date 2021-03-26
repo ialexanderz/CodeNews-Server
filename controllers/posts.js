@@ -10,7 +10,6 @@ const {Post} = require('../models/Post.js')
 // Create 
 router.post('/', async (req, res) => {
     const newPost = await Post.create({
-        comment_content: req.body.comment_content,
         post_content: req.body.post_content
     })
         await newPost.save()
@@ -27,26 +26,35 @@ router.get('/:id', async (req, res) => {
         }
     } catch (err) {
         res.json({
-            msg: 'Nothing to show Sorry'
+            msg: 'No such a post found in our memory'
         })
     }
 })
 
+// Read (Index)
+router.get('/', async (req, res) => {
+    const allPosts = await Post.find({})
+    res.json(allPosts)
+})
 
 
- // Update
-router.put('/:postId/comments/:commentId', async (req, res) => {
-    const updatedPost = await Post.findByIdAndUpdate(req.params.comment.id, {
+
+
+
+// Update
+router.put('/:id', async (req, res) => {
+    const updatedPost = await Post.findByIdAndUpdate(req.params.id, {
         post_content: req.body.post_content
     })
     res.json(updatedPost)
+
+
 })
 
 // Delete
-router.delete('/:postId/comments/:commentId', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     const deletedPost = await Post.findByIdAndDelete(req.params.id)
     res.json(deletedPost)
 })
-
 
 module.exports = router

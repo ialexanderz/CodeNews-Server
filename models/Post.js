@@ -1,12 +1,30 @@
 // require mongoose
 const { text } = require("express");
 const mongoose = require("mongoose");
+// const {CommentSchema} = require('./Comment.js')
 
-const {CommentSchema} = require('./Comment.js')
+
+//sub schema for comments
+const commentSchema = new mongoose.Schema({
+  post_id: {
+    type: Number,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'comments'
+  },
+  content: {
+    type: String,
+  },
+  comment_upvote: {
+    type: Number,
+  },
+});
 
 
-// create the schema
-const PostSchema = new mongoose.Schema({
+
+// create the post schema
+const postSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'comments'
@@ -23,10 +41,12 @@ const PostSchema = new mongoose.Schema({
   post_upvote: {
     type: String,
   },
-  comments: [CommentSchema]
+  comments:[commentSchema]//Embedded subdocument one:Many relationship
+
 });
 
-// export the model
-const Post = mongoose.model("posts", PostSchema);
+const Post = mongoose.model('Post', postSchema)
+const Comment = mongoose.model('Comment', commentSchema)
 
-module.exports = {Post, PostSchema}
+
+module.exports = { Post, Comment }
