@@ -3,7 +3,7 @@ const User = require("../models/Post.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authLockedRoute = require("./Users/authLockedRoute");
-const {Post} = require('../models/Post.js')
+const { Post } = require("../models/Post.js");
 
 
 
@@ -37,17 +37,12 @@ router.get('/', async (req, res) => {
     res.json(allPosts)
 })
 
-
-
-
-
 // Update
 router.put('/:id', async (req, res) => {
     const updatedPost = await Post.findByIdAndUpdate(req.params.id, {
         post_content: req.body.post_content
     })
     res.json(updatedPost)
-
 
 })
 

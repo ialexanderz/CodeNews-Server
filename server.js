@@ -14,17 +14,14 @@ app.use(morgan('tiny'))
 app.use(cors())
 //require body parser
 app.use(express.json())
-app.use(express.urlencoded({extended: false }))
-
-
-
-
+app.use(express.urlencoded({extended: false }));
 
 
 //test index routes 
 app.get('/',(req,res)=> {
     res.json({msg:'My p3 begin'})
 })
+
 
 
 //controllers

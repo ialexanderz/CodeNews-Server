@@ -27,10 +27,7 @@ const commentSchema = new mongoose.Schema({
 const postSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'comments'
-  },
-  url: {
-    type: String,
+    ref: 'user'
   },
   title: {
     type: String,
@@ -39,7 +36,7 @@ const postSchema = new mongoose.Schema({
     type: String,
   },
   post_upvote: {
-    type: String,
+    type: Number,
   },
   comments:[commentSchema]//Embedded subdocument one:Many relationship
 
@@ -49,4 +46,5 @@ const Post = mongoose.model('Post', postSchema)
 const Comment = mongoose.model('Comment', commentSchema)
 
 
-module.exports = { Post, Comment }
+module.exports = {Post, PostSchema}
+
