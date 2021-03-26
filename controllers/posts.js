@@ -46,5 +46,12 @@ router.delete("/:id", async (req, res) => {
 });
 
 // todo UPDATE
+// Update
+router.put("/postId/comments/commentId", async (req, res) => {
+  const updatedPost = await Post.findByIdAndUpdate(req.params.id, {
+    post_content: req.body.post_content,
+  });
+  res.json(updatedPost);
+});
 
 module.exports = router;
