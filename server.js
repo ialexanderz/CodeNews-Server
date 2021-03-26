@@ -22,8 +22,6 @@ app.get('/',(req,res)=> {
     res.json({msg:'My p3 begin'})
 })
 
-
-
 //controllers
 app.use('/users', require('./controllers/Users/user'))
 app.use('/comments', require('./controllers/comments') )
