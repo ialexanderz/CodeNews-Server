@@ -9,7 +9,7 @@ const CommentSchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'comments'
+    ref: 'User'
   },
   content: {
     type: String,

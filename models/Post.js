@@ -7,7 +7,7 @@ const {CommentSchema} = require('./Comment.js')
 const PostSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user'
+    ref: 'User'
   },
   title: {
     type: String,
@@ -26,6 +26,6 @@ const Post = mongoose.model('Post', PostSchema)
 
 
 
-module.exports = {Post, postSchema}
+module.exports = {Post, PostSchema}
 
 
