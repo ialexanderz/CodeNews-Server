@@ -27,6 +27,7 @@ router.post("/register", async (req, res) => {
 
     // CREATE a user in the db
     const newUser = new User({
+      username: req.body.username,
       email: req.body.email,
       password: hashedPassword,
     });
@@ -35,6 +36,7 @@ router.post("/register", async (req, res) => {
 
     // make a jwt payload
     const payload = {
+      username:newUser.username,
       email: newUser.email,
       id: newUser.id,
     };
@@ -79,6 +81,7 @@ router.post("/login", async (req, res) => {
 
     // create jwt token
     const payload = {
+      username: foundUser.username,
       email: foundUser.email,
       id: foundUser.id,
     };
