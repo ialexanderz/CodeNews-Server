@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
 // Read (Show)
 router.get('/:id', async (req, res) => {
     try {
-        const foundPost = await Post.findById(req.params.id)
+        const foundPost = await Post.findById(req.params._id)
         console.log(foundPost)
         if(foundPost) {
             res.json(foundPost)

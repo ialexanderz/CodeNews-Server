@@ -28,15 +28,16 @@ router.get("/", async (req, res) => {
 });
 
 // Create a comment
-router.post('/', async (req, res) => {
+router.post('/:postId', async (req, res) => {
   try {
-    const foundPost = await Post.findById(req.body.postId)
+    const foundPost = await Post.findById(req.params.postId)
     console.log(foundPost)
     const newComment = new Comment({user: req.body.userId , content: req.body.content, comment_upvote: 0 })
     await newComment.save()
-    foundPost.comments.push(newComment)
-    await foundPost.save()
-    res.json(newComment)
+    console.log(newComment)
+    // foundPost.comments.push(newComment)
+    // await foundPost.save()
+    // res.json(newComment)
 
 
   } catch(error) {
