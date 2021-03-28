@@ -10,11 +10,22 @@ const { Post } = require("../models/Post.js");
 // Create 
 router.post('/', async (req, res) => {
     const newPost = await Post.create({
-        post_content: req.body.post_content
+        title: req.body.title,
+        post_content: req.body.post_content,
+        image: req.body.image
     })
         await newPost.save()
     res.json(newPost)
 })
+
+// router.get("/:userid", async (req, res) => {
+//     try{
+//         const foundUser = await 
+
+//     }catch (err){
+        
+//     }
+// })
 
 // Read (Show)
 router.get('/:id', async (req, res) => {
@@ -25,15 +36,21 @@ router.get('/:id', async (req, res) => {
             res.json(foundPost)
         }
     } catch (err) {
-        res.json({
-            msg: 'No such a post found in our memory'
-        })
+        console.log(err);
+        // res.json({
+        //     msg: 'No such a post found in our memory'
+        // })
     }
 })
+
+
+
+
 
 // Read (Index)
 router.get('/', async (req, res) => {
     const allPosts = await Post.find({})
+    console.log(allPosts);
     res.json(allPosts)
 })
 
