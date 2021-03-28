@@ -49,7 +49,7 @@ console.log(process.env.JWT_SECRET);
 
   
 
-    res.json({ token })
+    res.json({ token, userId: newUser.id })
     
   } catch (error) {
     console.log(error);
@@ -91,7 +91,7 @@ router.post("/login", async (req, res) => {
       expiresIn: 60 * 60,
     });
 
-    res.json({ token });
+    res.json({ token, userId: foundUser.id });
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "server error AHHHHHH!" });

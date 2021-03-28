@@ -9,6 +9,9 @@ require('./models')
 const app = express()
 const PORT = process.env.PORT || 4000
 const rowdyResults = rowdy.begin(app)
+
+
+
 //middlewares
 app.use(morgan('tiny'))
 app.use(cors())
