@@ -6,14 +6,8 @@ const authLockedRoute = require("./Users/authLockedRoute");
 const { Comment } = require("../models/Comment.js");
 const { Post } = require("../models/Post.js");
 
-// router.post("/", async (req, res) => {
-//   const newComment = await Comment.create({
-//     comment_content: req.body.comment_content,
-//   });
-//   await newComment.save();
-//   res.json(newComment);
-// });
 
+// Read (Inex) -- Show a post's comments
 router.get("/", async (req, res) => {
   try {
     const comment = await Comment.find();
@@ -33,6 +27,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Create a comment
 router.post('/', async (req, res) => {
   try {
     const foundPost = await Post.findById(req.body.postId)
