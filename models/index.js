@@ -25,11 +25,11 @@ if (process.env.NODE_ENV === "development") {
     console.error(`🔥 something has gone wrong with the DB!!!!\n ${err}`);
   });
 } else {
-  // mongoDB Atlas code will go here
+ 
+  const MongoClient = require("mongodb").MongoClient;
+ // mongoDB Atlas code will go here
   // username: super_cool_person
   // pw: hello
-  const MongoClient = require("mongodb").MongoClient;
-
   const uri = process.env.ATLAS_URI;
 
   const client = new MongoClient(uri, {
